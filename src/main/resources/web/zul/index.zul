@@ -1,0 +1,6 @@
+<?page title="Index" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <window title="Hello" width="500px" border="normal">
+        <label value="Hello ZK"/>
+    </window>
+</zk>

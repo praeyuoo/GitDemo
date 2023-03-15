@@ -1,0 +1,146 @@
+<zk>
+    <window title="Add/View Form" width="auto" border="normal">
+        <div form="@id('fx') @load(vm.formAddView) @save(vm.formAddView, before='save') @validator('com.exercise.zkspringboot.validator.AddViewValidator')">
+            <grid>
+                <custom-attributes org.zkoss.zul.nativebar="false"/>
+                <columns>
+                    <column width="300px"/>
+                    <column width="300px"/>
+                    <column/>
+                </columns>
+                <rows>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Form ID :
+                        </hbox>
+                        <textbox value="@bind(fx.formId)" disabled="true"/>
+                        <label/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Form ABBR :
+                        </hbox>
+                        <textbox value="@save(fx.abbr) @bind(fx.abbr)" disabled="@bind(vm.addFormDisable)"/>
+                        <label sclass="highlight" value="@load(msg['v_abbr'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Controller :
+                        </hbox>
+                        <combobox selectedItem="@save(fx.controller) @bind(fx.controller)"
+                                  value="@bind(fx.controllerValue)"
+                                  readonly="true" disabled="@bind(vm.addFormDisable)">
+                            <comboitem value="1" label="KBank"/>
+                        </combobox>
+                        <label sclass="highlight" value="@load(msg['v_controller'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Create Date :
+                        </hbox>
+                        <datebox value="@save(fx.createDate) @bind(fx.createDate)" format="dd-MMM-yyyy"
+                                 readonly="true" disabled="@bind(vm.addFormDisable)"/>
+                        <label sclass="highlight" value="@load(msg['v_createDate'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Expire Date :
+                        </hbox>
+                        <datebox value="@bind(fx.expireDate)" format="dd-MMM-yyyy" readonly="true" disabled="@bind(vm.addFormDisable)"/>
+                        <label/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Renew Option :
+                        </hbox>
+                        <combobox selectedItem="@save(fx.renewOption) @bind(fx.renewOption)"
+                                  value="@bind(fx.renewOptionValue)"
+                                  readonly="true" disabled="@bind(vm.addFormDisable)">
+                            <comboitem value="OPT-IN" label="OPT-IN"/>
+                        </combobox>
+                        <label sclass="highlight" value="@load(msg['v_renewOption'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            APPR Group Code :
+                        </hbox>
+                        <textbox value="@bind(fx.apprGroup)" disabled="true"/>
+                        <label/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Receiver Display Level :
+                        </hbox>
+                        <combobox selectedItem="@save(fx.displayLevel) @bind(fx.displayLevel)"
+                                  value="@bind(fx.displayLevelValue)"
+                                  readonly="true" disabled="@bind(vm.addFormDisable)">
+                            <comboitem value="R" label="Receiver"/>
+                        </combobox>
+                        <label sclass="highlight" value="@load(msg['v_displayLevel'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Display Sequence :
+                        </hbox>
+                        <intbox value="@save(fx.displaySequence) @bind(fx.displaySequence)"
+                                disabled="@bind(vm.addFormDisable)"/>
+                        <label sclass="highlight" value="@load(msg['v_displaySequence'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Maintain by KBank Flag :
+                        </hbox>
+                        <combobox selectedItem="@save(fx.maintainByKbFlg) @bind(fx.maintainByKbFlg)"
+                                  value="@bind(fx.maintainByKbFlgValue)"
+                                  readonly="true" disabled="@bind(vm.addFormDisable)">
+                            <comboitem value="Y" label="Yes"/>
+                            <comboitem value="N" label="No"/>
+                        </combobox>
+                        <label sclass="highlight" value="@load(msg['v_maintainByKbFlg'])"/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Progress :
+                        </hbox>
+                        <textbox value="@bind(fx.progress)" disabled="true"/>
+                        <label/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Status :
+                        </hbox>
+                        <radiogroup selectedItem="@bind(fx.status)">
+                            <radio value="A" label="Active" disabled="@bind(vm.addFormDisable)"/>
+                            <radio value="I" label="Inactive" disabled="@bind(vm.addFormDisable)"/>
+                        </radiogroup>
+                        <label/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Update By :
+                        </hbox>
+                        <textbox value="@bind(fx.updUser)" disabled="true"/>
+                        <label/>
+                    </row>
+                    <row>
+                        <hbox width="100%" pack="end">
+                            Update Date :
+                        </hbox>
+                        <textbox value="@bind(fx.updDt)" disabled="true"/>
+                        <label/>
+                    </row>
+                    <row>
+                        <div/>
+                        <div/>
+                        <hbox width="100%" pack="end">
+                            <div>
+                                <button label="Save" onClick="@command('save')" disabled="@bind(vm.saveBtnDisable)"/>
+                                <button label="Cancel" onClick="@command('clearAddView')" />
+                            </div>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+    </window>
+</zk>

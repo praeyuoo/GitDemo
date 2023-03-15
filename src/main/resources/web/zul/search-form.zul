@@ -1,0 +1,135 @@
+<zk>
+    <window title="Search Form" width="auto" border="normal">
+        <grid>
+            <custom-attributes org.zkoss.zul.nativebar="false"/>
+            <columns>
+                <column width="300px"/>
+                <column/>
+            </columns>
+            <rows>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Form ID :
+                    </hbox>
+                    <intbox value="@bind(vm.formSearch.formId)"/>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Form ABBR :
+                    </hbox>
+                    <textbox value="@bind(vm.formSearch.abbr)"/>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Controller :
+                    </hbox>
+                    <combobox selectedItem="@bind(vm.formSearch.controller)" readonly="true">
+                        <comboitem value="1" label="KBank"/>
+                    </combobox>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Renew Option :
+                    </hbox>
+                    <combobox selectedItem="@bind(vm.formSearch.renewOption)" readonly="true">
+                        <comboitem value="OPT-IN" label="OPT-IN"/>
+                    </combobox>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Maintain by KBank Flag :
+                    </hbox>
+                    <combobox selectedItem="@bind(vm.formSearch.maintainByKbFlg)" readonly="true">
+                        <comboitem value="Y" label="Yes"/>
+                        <comboitem value="N" label="No"/>
+                    </combobox>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Progress :
+                    </hbox>
+                    <combobox selectedItem="@bind(vm.formSearch.progress)" readonly="true">
+                        <comboitem value="P" label="Publish"/>
+                    </combobox>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Status :
+                    </hbox>
+                    <radiogroup selectedItem="@bind(vm.formSearch.status)">
+                        <radio value="all" label="All"/>
+                        <radio value="A" label="Active"/>
+                        <radio value="I" label="Inactive"/>
+                    </radiogroup>
+                </row>
+                <row>
+                    <hbox width="100%" pack="end">
+                        Update By :
+                    </hbox>
+                    <textbox value="@bind(vm.formSearch.updUser)"/>
+                </row>
+                <row>
+                    <div/>
+                    <hbox width="100%" pack="end">
+                        <div>
+                            <button label="Search" onClick="@command('search')"/>
+                            <button label="Clear" onClick="@command('clearSearch')"/>
+                        </div>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        <separator/>
+        <separator bar="true"/>
+        <separator/>
+        <hbox width="100%" pack="end">
+            <button label="New" src="~./img/plus.png" onClick="@command('gotoAddView')"/>
+        </hbox>
+        <separator/>
+        <listbox model="@bind(vm.formList)" emptyMessage="No found"
+                 mold="paging" pageSize="5">
+            <listhead sizable="true">
+                <listheader label="No." width="50px" align="center"/>
+                <listheader label="Form ID" width="80px" align="center"/>
+                <listheader label="Form ABBR" width="150px" align="left"/>
+                <listheader label="Controller" align="center"/>
+                <listheader label="Create Date" align="center"/>
+                <listheader label="Expire Date" align="center"/>
+                <listheader label="Renew Option" align="center"/>
+                <listheader label="APPR Group Code" align="center"/>
+                <listheader label="Receiver Display Level" align="center"/>
+                <listheader label="Display Sequence" align="center"/>
+                <listheader label="Maintain by KBank Flag" align="center"/>
+                <listheader label="Progress" align="center"/>
+                <listheader label="Status" align="center"/>
+                <listheader label="Update By" align="center"/>
+                <listheader label="Update Date" align="center"/>
+                <listheader/>
+            </listhead>
+            <template name="model" var="item">
+                <listitem>
+                    <custom-attributes org.zkoss.zul.nativebar="false"/>
+                    <listcell label="@bind(itemStatus.index + 1)" />
+                    <listcell label="@bind(item.formId)"/>
+                    <listcell label="@bind(item.abbr)"/>
+                    <listcell label="@bind(item.controller)"/>
+                    <listcell label="@bind(item.createDateValue)"/>
+                    <listcell label="@bind(item.expireDateValue)"/>
+                    <listcell label="@bind(item.renewOption)"/>
+                    <listcell label="@bind(item.apprGroup)"/>
+                    <listcell label="@bind(item.displayLevel)"/>
+                    <listcell label="@bind(item.displaySequence)"/>
+                    <listcell label="@bind(item.maintainByKbFlg)"/>
+                    <listcell label="@bind(item.progress)"/>
+                    <listcell src="@bind(item.status)"/>
+                    <listcell label="@bind(item.updUser)"/>
+                    <listcell label="@bind(item.updDtValue)"/>
+                    <listcell>
+                        <button src="~./img/edit.png" tooltiptext="View"
+                                onClick="@command('viewContent',item=item)"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>

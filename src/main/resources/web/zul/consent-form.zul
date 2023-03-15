@@ -1,0 +1,10 @@
+<?page title="Consent Form" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <style src="~./css/styles.css"/>
+    <window title="Consent Form" width="auto" border="normal" apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.exercise.zkspringboot.viewModel.FormViewModel')"
+            validationMessages="@id('msg')">
+        <include src="~./zul/search-form.zul" visible="@load(vm.searchVisible)"/>
+        <include src="~./zul/add-view-form.zul" visible="@load(vm.addViewVisible)"/>
+    </window>
+</zk>

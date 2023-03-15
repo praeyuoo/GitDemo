@@ -1,0 +1,9 @@
+.z-window-header, .z-label, .z-textbox, .z-intbox, .z-radio-content,
+.z-combobox-input, .z-comboitem-text, .z-button, .z-datebox-input,
+.z-listheader-content, .z-listcell-content {
+    font-size: 12px;
+}
+
+.highlight {
+    color: red;
+}
